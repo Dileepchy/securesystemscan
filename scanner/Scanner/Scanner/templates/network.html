@@ -1,0 +1,77 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="homepage" style="background-image: url('static/img/bkg.jpg');">
+
+
+    <div class="homehead">
+
+        <h1 > Scan the Domain of your wish</h1>
+        
+        <br/>
+       
+      
+       <form action="network" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+
+
+        <div class="input-group input-group-lg">
+           
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" name="domain">
+          </div>
+
+        <br/>
+        
+        <input class="btn btn-primary"type="submit" value="Scan"/>
+        </form>
+       
+
+
+        </div>
+    
+    
+    
+</div>
+{% endblock %}
+
+{% block Vulnerability %}
+<div class="vuln-class">
+ {% for host in Host %}
+ 
+        <h1>{{host}}</h1>
+            <table class="table">
+                <thead>
+                <tr>
+        
+                    <th scope="col">Port</th>
+                    <th scope="col">Status</th>
+                
+                </tr>
+                </thead>
+                <tbody>
+                
+                {% for key,value in dict.items %} 
+
+                {% if key == host %}
+              
+                {% for k,v in value.items %}
+                    
+                <tr>
+                
+                    <td>{{ k }}</td>
+                    <td>{{ v }}</td>
+                
+                
+                </tr>
+               
+                {% endfor %}
+                {% endif %}
+                
+                    {% endfor %}
+                </tbody>
+            </table>
+
+  {% endfor %}
+
+
+</div>
+{% endblock %}

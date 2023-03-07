@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="homepage" style="background-image: url('static/img/bg.jpg');">
+
+
+    <div class="homehead">
+
+        <h1 > Scan the Domain of your wish</h1>
+        
+        <br/>
+       
+      
+       <form action="scan" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+
+
+        <div class="input-group input-group-lg">
+           
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" name="domain">
+          </div>
+
+        <br/>
+        
+        <input class="btn btn-primary"type="submit" value="Scan"/>
+        </form>
+       
+
+
+        </div>
+    
+    
+    
+</div>
+{% endblock %}
+
+{% block Vulnerability %}
+<div class="vuln-class">
+
+  {% for domain in alldomain %}
+  {% comment %} <div class="col-4"> {% endcomment %}
+    <a class"item" href="showdetail?domain={{domain}}">
+      <div class="card" style="width: 18rem;">
+        <img src="/static/img/vuln.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{domain}}</h5>
+        </div>
+      </div>
+    </a>
+  {% comment %} </div> {% endcomment %}
+ 
+{% endfor %}
+</div>
+{% endblock%}

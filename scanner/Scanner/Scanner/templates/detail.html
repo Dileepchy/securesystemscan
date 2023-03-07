@@ -1,0 +1,68 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class=head>
+
+<h1 style={background-color:#007bff}>{{domain}}</h1>
+
+<div class="list-group">
+    <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+        <h3>XSS</h3>
+    </button>
+    
+    
+  </div>
+
+
+{% for x in xss%}
+
+<ul class="list-group list-group-flush">
+    <li class="list-group-item">{{x}}</li> 
+  </ul>
+{% endfor %}
+<div class="list-group">
+    <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+        <h3>LFI</h3>
+    </button>
+    
+    
+  </div>
+{% for l in lfi%}
+
+<ul class="list-group list-group-flush">
+    <li class="list-group-item">{{l}}</li> 
+  </ul>
+{% endfor %}
+
+<div class="list-group">
+    <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+        <h3>Redirect</h3>
+    </button>
+    
+    
+  </div>
+{% for r in redirect%}
+
+<ul class="list-group list-group-flush">
+    <li class="list-group-item">{{r}}</li> 
+  </ul>
+{% endfor %}
+
+
+<div class="list-group">
+  <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+      <h3>Hostile Subdomain Takeover</h3>
+  </button>
+  
+  
+</div>
+
+
+{% for st in hst%}
+
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">{{st}}</li> 
+</ul>
+{% endfor %}
+</div>
+
+{% endblock content %}
